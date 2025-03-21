@@ -1,4 +1,4 @@
-def convert_integer_part(value, base):
+def convert_integer(value, base):
     symbols = "0123456789ABCDEF"
     if value == 0:
         return "0"
@@ -11,7 +11,7 @@ def convert_integer_part(value, base):
         value //= base
     return '-' + output if negative else output
 
-def convert_fractional_part(value, base, max_places=8):
+def convert_fractional(value, base, max_places=8):
     symbols = "0123456789ABCDEF"
     result = ""
     count = 0
@@ -33,8 +33,8 @@ def base_converter(input_str, bases):
             print(f"Input (decimal): {number}")
 
             for b in bases:
-                int_result = convert_integer_part(int_part, b)
-                frac_result = convert_fractional_part(frac_part, b)
+                int_result = convert_integer(int_part, b)
+                frac_result = convert_fractional(frac_part, b)
                 print(f"Base {b}: {int_result}.{frac_result}")
 
         else:
@@ -42,7 +42,7 @@ def base_converter(input_str, bases):
             print(f"Input (decimal): {number}")
 
             for b in bases:
-                int_result = convert_integer_part(number, b)
+                int_result = convert_integer(number, b)
                 print(f"Base {b}: {int_result}")
 
     except ValueError:
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         print("Error: No input provided for number.")
         exit()
 
-    base_input = input("Enter bases to convert to (e.g., 2,8,16 or custom like 3,5,12): ").strip()
+    base_input = input("Enter bases to convert to (e.g. 2,8,16 or custom): ").strip()
     
     if not base_input:
         print("Error: No input provided for bases.")
